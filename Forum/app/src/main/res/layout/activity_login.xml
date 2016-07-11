@@ -26,14 +26,14 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/login_signin"
+        android:id="@+id/login_btn_cadastrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In" />
+        android:text="Cadastrar" />
 
     <Button
-        android:id="@+id/login_signup"
+        android:id="@+id/login_btn_entrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up" />
+        android:text="Entrar" />
 </LinearLayout>
