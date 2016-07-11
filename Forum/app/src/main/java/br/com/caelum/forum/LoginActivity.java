@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void irParaTopicosActivity() {
-        Intent topicosActivity = new Intent(LoginActivity.this, TopicosActivity.class);
+        Intent topicosActivity = new Intent(LoginActivity.this, ListaTopicosActivity.class);
         startActivity(topicosActivity);
         finish();
     }

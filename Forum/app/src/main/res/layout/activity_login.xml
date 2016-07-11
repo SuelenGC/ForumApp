@@ -16,13 +16,15 @@
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:hint="Email"
+        android:text="suelengcarvalho@gmail.com"/>
 
     <EditText
         android:id="@+id/login_senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Senha"
+        android:text="123456"
         android:inputType="textPassword" />
 
     <Button

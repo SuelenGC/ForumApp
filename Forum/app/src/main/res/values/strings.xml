@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Forum</string>
+    <string name="menu_novo">Novo</string>
+    <string name="menu_sair">Sair</string>
+    <string name="label_topico_titulo">Título</string>
+    <string name="label_topico_descricao">Descrição</string>
+    <string name="action_salvar">Salvar</string>
 </resources>
