@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "734494693491",
+    "firebase_url": "https://forum-e3a8a.firebaseio.com",
+    "project_id": "forum-e3a8a",
+    "storage_bucket": "forum-e3a8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734494693491:android:277dbfb70e21feca",
+        "android_client_info": {
+          "package_name": "br.com.caelum.forum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734494693491-img80jtshv8gjuumqjfqjsrjobel103t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDThbuOVVhmcgMtegWGggpVwSNfutzDva8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
