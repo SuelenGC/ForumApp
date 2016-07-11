@@ -1,5 +1,6 @@
 package br.com.caelum.forum;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -72,10 +73,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Cadastro feito com sucesso!", Toast.LENGTH_SHORT).show();
-                        } else {
+                        if (!task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Falha ao cadastrar!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            irParaTopicosActivity();
                         }
                     }
                 });
@@ -95,15 +96,21 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Usuário entrou com sucesso!", Toast.LENGTH_SHORT).show();
-                        } else {
+                        if (!task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Falha ao entrar!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            irParaTopicosActivity();
                         }
                     }
                 });
             }
         });
+    }
+
+    private void irParaTopicosActivity() {
+        Intent topicosActivity = new Intent(LoginActivity.this, TopicosActivity.class);
+        startActivity(topicosActivity);
+        finish();
     }
 
     //Passo 3
