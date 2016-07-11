@@ -12,6 +12,7 @@ Forum/*.class
 Forum/bin/
 Forum/gen/
 Forum/out/
+Forum/.idea/
 
 # Gradle files
 Forum/.gradle/
