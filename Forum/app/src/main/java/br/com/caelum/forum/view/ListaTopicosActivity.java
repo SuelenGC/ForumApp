@@ -1,4 +1,4 @@
-package br.com.caelum.forum;
+package br.com.caelum.forum.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import br.com.caelum.forum.R;
 
 public class ListaTopicosActivity extends AppCompatActivity {
     @Override
