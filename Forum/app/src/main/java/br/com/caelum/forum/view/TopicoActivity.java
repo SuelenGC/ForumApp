@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.caelum.forum.R;
@@ -18,11 +17,14 @@ public class TopicoActivity extends AppCompatActivity {
 
     private EditText txtTitulo;
     private EditText txtDescricao;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topico);
+
+        database = FirebaseDatabase.getInstance();
 
         txtDescricao = (EditText) findViewById(R.id.topico_descricao);
         txtTitulo = (EditText) findViewById(R.id.topico_titulo);
@@ -42,8 +44,9 @@ public class TopicoActivity extends AppCompatActivity {
                 topico.setTitulo(txtTitulo.getText().toString());
                 topico.setDescricao(txtDescricao.getText().toString());
 
-                TopicoDao dao = new TopicoDao();
+                TopicoDao dao = new TopicoDao(database);
                 dao.insere(topico);
+                finish();
         }
         return true;
     }

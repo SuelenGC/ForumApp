@@ -9,8 +9,8 @@ public class TopicoDao {
     private FirebaseDatabase database;
     private DatabaseReference topicosReference;
 
-    public TopicoDao() {
-        database = FirebaseDatabase.getInstance();
+    public TopicoDao(FirebaseDatabase database) {
+        this.database = database;
         topicosReference = database.getReference("topicos");
     }
 
