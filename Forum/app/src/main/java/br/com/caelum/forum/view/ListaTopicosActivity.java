@@ -39,42 +39,11 @@ public class ListaTopicosActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         DatabaseReference topicosRef = database.getReference("topicos");
 
-        listaTopicos = (ListView) findViewById(R.id.topicos_lista);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, topicos);
+        listaTopicos = (ListView) findViewById(R.id.topicos_lista);
         listaTopicos.setAdapter(adapter);
 
-        topicosRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Topico topico = dataSnapshot.getValue(Topico.class);
-                topicos.add(topico);
-
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w("ERRO", "topicos:onCancelled", databaseError.toException());
-                Toast.makeText(ListaTopicosActivity.this, "Failed to load topicos.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        topicosRef.addChildEventListener(new TopicosEventListener());
     }
 
     @Override
@@ -92,5 +61,37 @@ public class ListaTopicosActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    class TopicosEventListener implements ChildEventListener {
+        @Override
+        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            Topico topico = dataSnapshot.getValue(Topico.class);
+            topicos.add(topico);
+
+            adapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            Log.w("ERRO", "topicos:onCancelled", databaseError.toException());
+            Toast.makeText(ListaTopicosActivity.this, "Failed to load topicos.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
