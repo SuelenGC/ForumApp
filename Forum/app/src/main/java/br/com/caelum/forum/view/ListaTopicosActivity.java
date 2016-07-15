@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -42,6 +44,8 @@ public class ListaTopicosActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, topicos);
         listaTopicos = (ListView) findViewById(R.id.topicos_lista);
         listaTopicos.setAdapter(adapter);
+        listaTopicos.setOnItemClickListener(new TopicosItemClickListener());
+
 
         topicosRef.addChildEventListener(new TopicosEventListener());
     }
@@ -92,6 +96,18 @@ public class ListaTopicosActivity extends AppCompatActivity {
             Log.w("ERRO", "topicos:onCancelled", databaseError.toException());
             Toast.makeText(ListaTopicosActivity.this, "Failed to load topicos.",
                     Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class TopicosItemClickListener implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+            Intent novoTopico = new Intent(ListaTopicosActivity.this, TopicoActivity.class);
+
+            Topico topico = topicos.get(position);
+            novoTopico.putExtra("topico", topico);
+
+            startActivity(novoTopico);
         }
     }
 }

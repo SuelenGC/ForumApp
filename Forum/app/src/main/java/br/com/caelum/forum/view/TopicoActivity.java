@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
+
 import br.com.caelum.forum.R;
 import br.com.caelum.forum.dao.TopicoDao;
 import br.com.caelum.forum.model.Topico;
@@ -18,6 +20,7 @@ public class TopicoActivity extends AppCompatActivity {
     private EditText txtTitulo;
     private EditText txtDescricao;
     private FirebaseDatabase database;
+    private Topico topico;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +31,12 @@ public class TopicoActivity extends AppCompatActivity {
 
         txtDescricao = (EditText) findViewById(R.id.topico_descricao);
         txtTitulo = (EditText) findViewById(R.id.topico_titulo);
+
+        topico = (Topico) getIntent().getSerializableExtra("topico");
+
+        if (topico != null) {
+            colocaDadosNoFormulario();
+        }
     }
 
     @Override
@@ -40,14 +49,22 @@ public class TopicoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_salvar:
-                Topico topico = new Topico();
-                topico.setTitulo(txtTitulo.getText().toString());
-                topico.setDescricao(txtDescricao.getText().toString());
+                pegaDadosDoFormulario();
 
                 TopicoDao dao = new TopicoDao(database);
                 dao.insere(topico);
                 finish();
         }
         return true;
+    }
+
+    private void colocaDadosNoFormulario() {
+        txtTitulo.setText(topico.getTitulo());
+        txtDescricao.setText(topico.getDescricao());
+    }
+
+    private void pegaDadosDoFormulario() {
+        topico.setTitulo(txtTitulo.getText().toString());
+        topico.setDescricao(txtDescricao.getText().toString());
     }
 }

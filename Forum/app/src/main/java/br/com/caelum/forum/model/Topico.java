@@ -1,8 +1,12 @@
 package br.com.caelum.forum.model;
 
-public class Topico {
+import java.io.Serializable;
+
+public class Topico implements Serializable{
+
     private String titulo;
     private String descricao;
+    private String autor;
 
     public String getTitulo() {
         return titulo;
@@ -18,6 +22,14 @@ public class Topico {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     @Override
